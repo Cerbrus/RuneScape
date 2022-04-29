@@ -1,0 +1,83 @@
+@use 'variables';
+
+.nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    &-tabs {
+        margin-block-start: 0;
+        margin-left: variables.$size-gap;
+        margin-right: variables.$size-gap;
+        margin-bottom: 1px;
+        box-sizing: border-box;
+        height: variables.$size-tab-control;
+        padding: 0;
+        background: none;
+
+        > li {
+            float: left;
+            color: variables.$theme-text;
+            font-family: variables.$font-family-verdana;
+            font-weight: bold;
+            box-sizing: border-box;
+            height: variables.$size-tab-control;
+
+            > a {
+                color: variables.$theme-text;
+                display: block;
+                padding: 0 variables.$size-gap;
+                text-decoration: none;
+                margin-right: 2px;
+                border: 1px solid transparent;
+                border-radius: variables.$size-gap-small variables.$size-gap-small 0 0;
+                line-height: variables.$size-tab-control;
+            }
+
+            &::marker {
+                content: '';
+            }
+
+            &:hover > a {
+                background-color: variables.$theme-background-transparent;
+
+                &,
+                &:hover,
+                &:focus {
+                    border: 1px solid variables.$theme-tabs-border;
+                }
+            }
+
+            &.right {
+                float: right;
+            }
+
+            &.active > a {
+                background-color: variables.$theme-background-transparent;
+
+                &,
+                &:hover,
+                &:focus {
+                    cursor: variables.$cursor-default;
+                    border: 1px solid variables.$theme-tabs-border;
+                    border-bottom-color: variables.$theme-background;
+                }
+            }
+        }
+    }
+}
+
+.nav,
+.navbar,
+.navbar-header,
+.navbar-collapse {
+    &:before,
+    &:after {
+        display: table;
+        content: ' ';
+    }
+
+    &:after {
+        clear: both;
+    }
+}

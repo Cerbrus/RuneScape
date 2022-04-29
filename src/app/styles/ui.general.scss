@@ -1,0 +1,118 @@
+@use 'variables';
+@use 'mixins';
+
+html,
+body {
+    font-family: sans-serif;
+    color: variables.$theme-text;
+
+    @include mixins.transition(all, 0.1s, linear);
+    //height: 100vh;
+    overflow: hidden;
+}
+
+body {
+    background: variables.$theme-background;
+    cursor: variables.$cursor-default;
+}
+
+body:before {
+    content: ' ';
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: variables.$theme-background-image;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    background-size: cover;
+    opacity: variables.$theme-background-opacity;
+    z-index: -1;
+
+    @media screen and (min-device-width: 1921px) {
+        background-image: variables.$theme-background-image-xl;
+    }
+}
+
+html.theme-background body:before {
+    display: block;
+}
+
+label {
+    cursor: variables.$cursor-default;
+}
+
+a,
+input,
+.pointer {
+    cursor: variables.$cursor-pointer;
+}
+
+a {
+    color: variables.$color-tooltip-text;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+p {
+    margin: variables.$size-gap 0;
+}
+
+strong {
+    margin-right: variables.$size-gap;
+}
+
+.font-d2 {
+    font-family: variables.$font-family-verdana;
+}
+
+.center-text {
+    text-align: center;
+}
+
+$sizes: (
+    'xs': 0.5rem,
+    's': 0.75rem,
+    'ms': 0.815rem,
+    'm': 1rem,
+    'ml': 1.25rem,
+    'l': 1.5rem,
+    'xl': 2rem
+);
+@each $key, $size in $sizes {
+    .text-#{$key} {
+        font-size: $size;
+    }
+}
+
+.hidden {
+    display: none !important;
+}
+
+.block {
+    display: block;
+}
+
+ul,
+pre {
+    background: var(--theme-table-background);
+    margin: 0;
+    padding: variables.$size-gap;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 24px;
+
+    li::marker {
+        font-family: variables.$font-family-verdana;
+        content: '* ';
+    }
+}

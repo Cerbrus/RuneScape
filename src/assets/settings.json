@@ -1,0 +1,15 @@
+{
+    "defaultLanguage": "en",
+    "storageDefaults": {
+        "appVersion": "",
+        "darkMode": null,
+        "settings": {
+            "customCursor": true,
+            "darkMode": true,
+            "enableBackground": true,
+            "tooltipDelay": 500
+        },
+        "uiActiveTabs": {},
+        "uiCollapsibleState": {}
+    }
+}

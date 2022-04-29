@@ -1,0 +1,49 @@
+@use 'sass:color';
+@use 'sass:math';
+
+$font-family-verdana: Verdana;
+
+$color-tooltip-text: var(--color-tooltip-text);
+$color-gray-dark-transparent: var(--color-gray-dark-transparent);
+$color-gray-medium-transparent: var(--color-gray-medium-transparent);
+$color-gray-light-transparent: var(--color-gray-light-transparent);
+
+$theme-text: var(--theme-text);
+$theme-tabs-border: var(--theme-tabs-border);
+
+$theme-background: var(--theme-background);
+$theme-background-image: var(--theme-background-image);
+$theme-background-image-xl: var(--theme-background-image-xl);
+$theme-background-transparent: var(--theme-background-transparent);
+$theme-background-owned: var(--theme-background-owned);
+$theme-background-craftable: var(--theme-background-craftable);
+$theme-background-opacity: var(--theme-background-opacity);
+
+$theme-checkbox: var(--theme-checkbox);
+$theme-checkbox-hover: var(--theme-checkbox-hover);
+$theme-checkbox-checked: var(--theme-checkbox-checked);
+
+$theme-input-background: var(--theme-input-background);
+$theme-input-border: var(--theme-input-border);
+$theme-input-text: var(--theme-input-text);
+$theme-input-clear: var(--theme-input-clear);
+$theme-input-clear-hover: var(--theme-input-clear-hover);
+
+$theme-button: var(--theme-button);
+$theme-button-text: var(--theme-button-text);
+$theme-button-hover: var(--theme-button-hover);
+
+$theme-table-background: var(--theme-table-background);
+$theme-table-background-hover: var(--theme-table-background-hover);
+
+$cursor-default: var(--cursor-default);
+$cursor-pointer: var(--cursor-pointer);
+$cursor-forbidden: var(--cursor-forbidden);
+
+$shadow-text: 1px 1px 2px black;
+
+$size-gap: 8px;
+$size-gap-small: math.div($size-gap, 2);
+$size-gap-table: 2px;
+$size-tab-control: 40px;
+$size-header: 53px;

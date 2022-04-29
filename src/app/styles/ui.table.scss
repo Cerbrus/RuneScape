@@ -1,0 +1,43 @@
+@use 'variables';
+
+$td: '[class*=column-]';
+
+.table {
+    display: grid;
+    grid-gap: variables.$size-gap-table;
+    background: variables.$theme-background;
+
+    .table {
+        border-bottom: variables.$size-gap-table solid variables.$theme-background;
+        margin-bottom: variables.$size-gap-table * -1;
+    }
+
+    #{$td},
+    > ui-table-sort-control,
+    > ui-table-head {
+        background: variables.$theme-table-background;
+        padding: variables.$size-gap-small variables.$size-gap;
+        align-items: center;
+
+        &.block {
+            display: block;
+        }
+    }
+
+    > ui-table-sort-control,
+    > ui-table-head {
+        display: grid;
+    }
+
+    &-row {
+        display: contents;
+
+        &:hover {
+            background: variables.$theme-table-background-hover;
+        }
+
+        &:hover #{$td} {
+            background: variables.$theme-table-background-hover;
+        }
+    }
+}

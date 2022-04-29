@@ -1,0 +1,27 @@
+@use 'variables';
+
+:host {
+    cursor: variables.$cursor-pointer;
+    grid-auto-flow: column;
+    grid-template-columns: min-content;
+    font-weight: bold;
+    text-align: center;
+
+    &:hover .sort-control:not(.enabled) {
+        opacity: 0.6;
+    }
+
+    &.sort-icon-right {
+        direction: rtl;
+    }
+}
+
+.sort-control {
+    user-select: none;
+    cursor: variables.$cursor-pointer;
+    opacity: 0.3;
+
+    &.enabled {
+        opacity: 1;
+    }
+}

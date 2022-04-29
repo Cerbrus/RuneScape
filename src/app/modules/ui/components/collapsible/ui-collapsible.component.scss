@@ -1,0 +1,28 @@
+@use 'variables';
+@use 'mixins';
+
+label {
+    display: block;
+    cursor: variables.$cursor-pointer;
+    margin: variables.$size-gap-small 0;
+}
+
+.collapsible {
+    height: auto;
+    overflow: hidden;
+
+    .wrapper {
+        margin-left: -10000px;
+        grid-template-columns: none;
+        @include mixins.transition(margin-top);
+    }
+}
+
+::ng-deep fa-icon.up svg {
+    transform: rotate(180deg);
+    @include mixins.transition(transform);
+
+    &.fa-pull-left {
+        transform: rotate(-180deg);
+    }
+}

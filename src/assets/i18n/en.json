@@ -1,0 +1,42 @@
+{
+    "common": {
+        "appTitle": "RuneScape Helper",
+        "by": "by",
+        "author": "Cerbrus",
+        "authorUrl": "https://github.com/Cerbrus",
+        "repositoryUrl": "https://github.com/Cerbrus/RuneScape",
+        "error": "Error",
+        "issueSubmit": "Submit a",
+        "or": "or",
+        "issueBugReport": "Bug report",
+        "issueFeatureRequest": "Feature Request"
+    },
+    "labels": {
+        "dev": "Development",
+        "POH": "Player-owned House"
+    },
+    "settings": {
+        "title": "Settings",
+        "customCursorOff": "Custom cursor disabled",
+        "customCursorOn": "Custom cursor enabled",
+        "darkModeOff": "Dark mode disabled",
+        "darkModeOn": "Dark mode enabled",
+        "enableBackgroundOff": "Background image disabled",
+        "enableBackgroundOn": "Background image enabled",
+        "tooltipDelay": "Time tooltips remain open in ms"
+    },
+    "tooltip": {
+        "keyboardShortcuts": {
+            "title": "Keyboard shortcuts",
+            "?": "Show / hide this help popup",
+            "tabs": "Tabs",
+            "p": "Open POH tab",
+            "s": "Open Settings tab",
+            "d": "Open Development tab",
+            "settings": "Settings",
+            "a": "Toggle dark mode",
+            "b": "Toggle background image",
+            "c": "Toggle custom cursor"
+        }
+    }
+}

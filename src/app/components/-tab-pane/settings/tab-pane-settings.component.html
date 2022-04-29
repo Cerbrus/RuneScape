@@ -1,0 +1,65 @@
+<label class="title text-xl">{{ 'settings.title' | translate }}</label>
+<div class="version">
+    <a [href]="'common.repositoryUrl' | translate" target="_blank">{{ 'common.appTitle' | translate }}</a>
+    <span>{{ environment.appVersion }}</span>
+    <span>{{ 'common.by' | translate }}</span>
+    <a [href]="'common.authorUrl' | translate" target="_blank">{{ 'common.author' | translate }}</a>
+</div>
+
+<div class="checkboxes grid">
+    <input-checkbox
+        (click)="onBoolChange('darkMode')"
+        [(checked)]="settings.darkMode"
+        [group]="'settings'"
+        [keyboardShortcut]="'a'"
+        [label]="getTitleKey('darkMode') | translate"
+        [showIcon]="true"
+    ></input-checkbox>
+
+    <input-checkbox
+        (click)="onBoolChange('enableBackground')"
+        [(checked)]="settings.enableBackground"
+        [group]="'settings'"
+        [keyboardShortcut]="'b'"
+        [label]="getTitleKey('enableBackground') | translate"
+        [showIcon]="true"
+    ></input-checkbox>
+
+    <input-checkbox
+        (click)="onBoolChange('customCursor')"
+        [(checked)]="settings.customCursor"
+        [group]="'settings'"
+        [keyboardShortcut]="'c'"
+        [label]="getTitleKey('customCursor') | translate"
+        [showIcon]="true"
+    ></input-checkbox>
+
+    <label class="numeric-setting">
+        {{ 'settings.tooltipDelay' | translate }}
+        <div class="clearable-input">
+            <input
+                (keyup)="onNumberChange()"
+                [(ngModel)]="settings.tooltipDelay"
+                [max]="10000"
+                [min]="0"
+                [placeholder]="'settings.tooltipDelay' | translate"
+                onClickSelect
+                type="number"
+            />
+            <fa-icon (click)="resetNumber('tooltipDelay')" [icon]="clearInputIcon" class="clear-input"></fa-icon>
+        </div>
+    </label>
+</div>
+
+<p class="issues">
+    <span>{{ 'common.issueSubmit' | translate }}</span>
+    <a routerLink="/issue/bug_report" target="_blank">
+        <fa-icon [icon]="bug"></fa-icon>
+        <span>{{ 'common.issueBugReport' | translate }}</span>
+    </a>
+    <span>{{ 'common.or' | translate }}</span>
+    <a routerLink="/issue/feature_request" target="_blank">
+        <fa-icon [icon]="lightBulb"></fa-icon>
+        <span>{{ 'common.issueFeatureRequest' | translate }}</span>
+    </a>
+</p>

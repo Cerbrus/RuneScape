@@ -1,0 +1,74 @@
+@use 'variables';
+@use 'mixins';
+@use 'sass:math';
+
+.wrapper {
+    $icon-scale: 0.5;
+    $icon-width: 162px * $icon-scale;
+    $icon-height: 104px * $icon-scale;
+    $icon-w: math.div($icon-width, 3);
+    $icon-h: math.div($icon-height, 2);
+
+    user-select: none;
+    font-family: variables.$font-family-verdana;
+    font-weight: bold;
+    cursor: variables.$cursor-pointer;
+
+    &.button {
+        display: block;
+        background: variables.$theme-checkbox;
+    }
+
+    .icon {
+        display: inline-block;
+        width: $icon-w;
+        height: $icon-h;
+        background: url('/assets/images/ui/buttons/checkbox.png');
+        background-size: $icon-width $icon-height;
+        background-position-y: -$icon-h;
+
+        + .label {
+            line-height: 26px;
+            vertical-align: top;
+            margin-left: variables.$size-gap;
+        }
+    }
+
+    &:hover {
+        &.button {
+            background: variables.$theme-checkbox-hover;
+        }
+
+        .icon {
+            background-position-x: -$icon-w;
+        }
+    }
+
+    &:active .icon {
+        background-position-x: $icon-w * -2;
+    }
+
+    &.checked {
+        &.button {
+            background: variables.$theme-checkbox-checked;
+        }
+
+        .icon {
+            background-position-y: 0;
+        }
+    }
+
+    &.text-xl {
+        text-align: center;
+        box-sizing: border-box;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+:host {
+    display: block;
+    height: 100%;
+}

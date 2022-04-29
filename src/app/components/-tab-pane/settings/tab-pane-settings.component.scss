@@ -1,0 +1,53 @@
+@use 'variables';
+
+:host {
+    font-family: variables.$font-family-verdana;
+    display: grid;
+    grid-template-columns: auto max-content;
+    grid-template-rows: min-content min-content;
+    grid-template-areas:
+        'title  version'
+        'checkboxes  issues';
+}
+
+.title {
+    grid-area: title;
+}
+
+.version {
+    grid-area: version;
+    text-align: right;
+}
+
+.issues {
+    grid-area: issues;
+    text-align: right;
+    align-self: end;
+}
+
+.checkboxes {
+    grid-area: checkboxes;
+    grid-template-columns: max-content min-content max-content auto;
+}
+
+input-checkbox {
+    grid-column: 1;
+
+    &.child {
+        margin-left: variables.$size-gap * 2;
+    }
+}
+
+.numeric-setting {
+    grid-column: 1 / 3;
+}
+
+ui-sprite-skill,
+ui-sprite-animated {
+    grid-column: 2;
+}
+
+span,
+a {
+    margin-left: variables.$size-gap;
+}
