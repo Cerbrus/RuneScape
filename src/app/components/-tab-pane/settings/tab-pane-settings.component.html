@@ -7,6 +7,22 @@
 </div>
 
 <div class="checkboxes grid">
+
+    <label class="numeric-setting">
+        {{ 'settings.userName' | translate }}
+        <div class="clearable-input">
+            <input
+                (keyup)="onUserNameChange()"
+                [(ngModel)]="settings.userName"
+                [placeholder]="'settings.userName' | translate"
+                onClickSelect
+                type="text"
+            />
+            <fa-icon (click)="resetString('userName')" [icon]="clearInputIcon" class="clear-input"></fa-icon>
+        </div>
+    </label>
+
+
     <input-checkbox
         (click)="onBoolChange('darkMode')"
         [(checked)]="settings.darkMode"

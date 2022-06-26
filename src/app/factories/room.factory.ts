@@ -1,14 +1,40 @@
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, take } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Cardinal } from '~enums/Cardinal';
-import { TRoomMap } from '~interfaces/poh/IRoomMap';
+import { ArrayHelper } from '~helpers';
+import { IRoom, IRoomAPIResponse } from '~interfaces/poh/IRoom';
+import { IRoomMap, TRoomMap } from '~interfaces/poh/IRoomMap';
+import { environment } from '../../environments/environment.prod';
 
+@Injectable({ providedIn: 'root' })
 export class RoomFactory {
-    public readonly rooms: Observable<TRoomMap> = new Observable<TRoomMap>();
+    constructor(private readonly http: HttpClient) {
+    }
 
-    public buildItems(): Partial<TRoomMap> {
+    public readonly rooms: Observable<TRoomMap> = this.loadRooms();
+
+    public loadRooms(): Observable<TRoomMap> {
+        return this.http.get<Array<IRoomAPIResponse>>(
+                `${environment.apiUrl}/skills/construction/rooms`
+            )
+            .pipe(
+                take(1),
+                map(response => ArrayHelper.toRecordWithKey(
+                    response,
+                    room => room.type,
+                    RoomFactory.mapRoomResponse) as TRoomMap));
+
+    }
+
+    private static mapRoomResponse(room: IRoomAPIResponse): IRoom {
         return {
-            aquarium: { level: 63, type: 'aquarium', cost: 200000, color: '', doors: Cardinal.All },
-            bedroom: { level: 20, type: 'bedroom', cost: 10000, color: '', doors: Cardinal.East | Cardinal.South }
+            ...room,
+            doors: (room.doors.includes('N') ? Cardinal.North : 0) |
+                (room.doors.includes('E') ? Cardinal.East : 0) |
+                (room.doors.includes('S') ? Cardinal.South : 0) |
+                (room.doors.includes('W') ? Cardinal.West : 0)
         };
     }
 }

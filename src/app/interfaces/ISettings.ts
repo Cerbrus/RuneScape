@@ -3,4 +3,5 @@ export interface ISettings {
     darkMode: boolean;
     enableBackground: boolean;
     tooltipDelay: number;
+    userName: string;
 }

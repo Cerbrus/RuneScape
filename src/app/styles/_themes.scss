@@ -9,6 +9,7 @@
     --cursor-pointer: pointer;
     --cursor-forbidden: no-drop;
 
+    /*
     &.custom-cursor {
         @include cursor(default, default_s, auto);
         @include cursor(pointer, pointer_s, pointer);
@@ -20,6 +21,7 @@
             @include cursor(forbidden, forbidden, no-drop);
         }
     }
+    */
 
     &.theme {
         &-light,
@@ -48,8 +50,8 @@
             --theme-checkbox: var(--color-gray-light);
             --theme-checkbox-hover: var(--color-gray-medium);
             --theme-checkbox-checked: var(--color-gray-dark);
-            --theme-background-image: url('/assets/images/ui/background/background_light.lowend.png');
-            --theme-background-image-xl: url('/assets/images/ui/background/background_light.png');
+            //--theme-background-image: url('/assets/images/ui/background/background_light.lowend.png');
+            //--theme-background-image-xl: url('/assets/images/ui/background/background_light.png');
             --theme-background-opacity: 0.6;
 
             --theme-input-background: var(--color-gray-light);
@@ -78,8 +80,8 @@
             --theme-background-owned: #{color.change(color.mix($bg, $bg-owned, $weight: 50%), $alpha: 1)};
             --theme-background-craftable: #{color.change(color.mix($bg, $bg-craftable, $weight: 50%), $alpha: 1)};
 
-            --theme-background-image: url('/assets/images/ui/background/background_dark.lowend.png');
-            --theme-background-image-xl: url('/assets/images/ui/background/background_dark.png');
+            //--theme-background-image: url('/assets/images/ui/background/background_dark.lowend.png');
+            //--theme-background-image-xl: url('/assets/images/ui/background/background_dark.png');
             --theme-background-opacity: 1;
 
             --theme-checkbox: var(--color-gray-dark);

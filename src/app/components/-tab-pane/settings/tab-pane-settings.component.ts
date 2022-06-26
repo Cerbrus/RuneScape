@@ -4,9 +4,10 @@ import { DomHelper, Helper, ObjectHelper } from '~helpers';
 import { ISettings } from '~interfaces';
 import { ITabPaneComponent } from '~interfaces/ui';
 import { faBug, faLightbulb, faUndo } from '~modules/font-awesome';
-import { StorageService } from '~services';
+import { StorageService, UserService } from '~services';
 
 type NumericKeys = 'tooltipDelay';
+type StringKeys = 'userName';
 
 @Component({
     selector: 'tab-pane-settings',
@@ -22,7 +23,7 @@ export class TabPaneSettingsComponent implements ITabPaneComponent {
     public lightBulb = faLightbulb;
     public clearInputIcon = faUndo;
 
-    constructor(private readonly storageService: StorageService) {
+    constructor(private readonly storageService: StorageService, private readonly userService: UserService) {
         this.settings = storageService.get.settings();
         this.registerDarkModeWatch();
         this.applySettings();
@@ -32,7 +33,7 @@ export class TabPaneSettingsComponent implements ITabPaneComponent {
         return `settings.${key}${this.settings[key] ? 'On' : 'Off'}`;
     }
 
-    public onBoolChange(key: keyof Omit<ISettings, NumericKeys>): void {
+    public onBoolChange(key: keyof Omit<ISettings, NumericKeys | StringKeys>): void {
         this.settings[key] = !this.settings[key];
         this.applySettings();
     }
@@ -41,7 +42,21 @@ export class TabPaneSettingsComponent implements ITabPaneComponent {
         this.applySettings();
     }
 
+    public onStringChange(): void {
+        this.applySettings();
+    }
+
+    public onUserNameChange(): void {
+        this.userService.loadUser(this.settings.userName);
+        this.onStringChange();
+    }
+
     public resetNumber(key: keyof Pick<ISettings, NumericKeys>): void {
+        this.settings[key] = this.storageService.getDefault.settings()[key];
+        this.applySettings();
+    }
+
+    public resetString(key: keyof Pick<ISettings, StringKeys>): void {
         this.settings[key] = this.storageService.getDefault.settings()[key];
         this.applySettings();
     }
